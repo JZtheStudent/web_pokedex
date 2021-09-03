@@ -7,7 +7,7 @@
   
   <link href="../styles/reset.css" rel="stylesheet">
   <link href="../styles/index.css" rel="stylesheet">
-
+  <script type="application/javascript" src="./main.js" defer></script>
   <title>Web Pokedex</title>
 </head>
 <body>
@@ -20,9 +20,10 @@
     <div id="search-filter-section">
       <div id="search-section">
         <form id="search-form">
-            <input type="text" value="" placeholder="Search for a Pokemon!">
+            <input type="text" class="search"  placeholder="Search for a Pokemon!">
             <input type="submit" value="Search">
         </form>
+        <ul class="suggestions"></ul>
       </div>
       
       <div id="filter-section">
