@@ -36,17 +36,10 @@ In addition, this project will include:
 
 
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">
 
- </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](./images/wireframe1.png "image_tooltip")
-
-
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold"> </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](./images/wireframe2.png "image_tooltip")
