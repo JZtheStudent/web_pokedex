@@ -22,10 +22,17 @@ header {
 }
 
 
-#search-filter-section {
+.search-filter-section {
   display: flex;
   justify-content: space-between;
   margin: 10px;
   padding: 10px;
+  border-bottom: 2px solid;
 }
 
+.pokemon-section {
+  display: block;
+
+  height: 500px;
+  background-color: lightblue;
+}

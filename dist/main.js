@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sea
   \***********************/
 /***/ (() => {
 
-eval("\nconst printSearchText = function() {\n  displaySuggestions(this.value);\n  \n}\n\nconst displaySuggestions = function(value) {\n  const html = `<li>${value}</li>`\n  suggestions.innerHTML = html;\n}\n\n\n\n\n\nconst searchInput = document.querySelector(\".search\");\nconst suggestions = document.querySelector(\".suggestions\");\n\nsearchInput.addEventListener('change', printSearchText);\nsearchInput.addEventListener('keyup', printSearchText);\n\n//# sourceURL=webpack:///./src/search.js?");
+eval("const pokeApi = \"https://pokeapi.co/api/v2/pokemon/\"\n\nlet pokemon = [];\n\nconst printSearchText = function() {\n  displaySuggestions(this.value);\n}\n\nconst displaySuggestions = function(value) {\n  const html = `<li>${value}</li>`\n  suggestions.innerHTML = html;\n}\n\nconst addItemToList = function(item) {\n  const pokemonItem = document.createElement('li');\n  pokemonItem.innerHTML = item;\n  pokemonItem.classList.add(\"pokemon-list-item\");\n  pokemonList.appendChild(pokemonItem);\n\n}\n\n\n\n\n\nconst searchInput = document.querySelector(\".search-input\");\nconst searchButton = document.querySelector(\".search-button\");\nconst suggestions = document.querySelector(\".suggestions\");\nconst pokemonList = document.querySelector(\".pokemon-list\");\n\n\n// searchInput.addEventListener('change', printSearchText);\n// searchInput.addEventListener('keyup', printSearchText);\n\nsearchButton.onclick = function(e) {\n  e.preventDefault();\n  console.log(searchInput.value);\n  addItemToList(searchInput.value);\n}\n\n//# sourceURL=webpack:///./src/search.js?");
 
 /***/ })
 
