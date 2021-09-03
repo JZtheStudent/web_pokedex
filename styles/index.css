@@ -15,9 +15,9 @@ header {
 
 #page-container {
   width: 80%;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 10%);
+  position: static;
+  margin: auto;
+ 
   background-color: rgb(116, 151, 127);
 }
 
@@ -31,8 +31,24 @@ header {
 }
 
 .pokemon-section {
-  display: block;
-
-  height: 500px;
   background-color: lightblue;
+}
+
+
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: purple;
+}
+
+
+.pokemon-list-item {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: brown;
 }
