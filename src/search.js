@@ -1,7 +1,5 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/"
 
-let pokemon = [];
-
 const printSearchText = function() {
   displaySuggestions(this.value);
 }
@@ -19,19 +17,16 @@ const addItemToList = function(item) {
 }
 
 const getPokemon = async function(query) {
-  console.log('in get')
   let url = pokeApi + query;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Could not fetch pokemon');
   }
   const data = await response.json();
-  console.log('done with get');
   return data
 }
 
 const displayPokemon = function(query="") {
-  console.log('In display')
   pokemon = [];
   getPokemon(query)
     .then(data => {
@@ -48,7 +43,6 @@ const displayPokemon = function(query="") {
     .catch(error => {
       console.error('Something wrong with fetch', error);
     })
-  console.log('finished display')
 }
 
 
@@ -57,12 +51,10 @@ const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
 
-
-// searchInput.addEventListener('change', printSearchText);
-// searchInput.addEventListener('keyup', printSearchText);
-
 searchButton.onclick = function(e) {
   e.preventDefault();
   console.log(searchInput.value);
   addItemToList(searchInput.value);
 }
+
+displayPokemon("?limit=5");
