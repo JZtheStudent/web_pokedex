@@ -23,44 +23,47 @@ const getAllPokemon = async function(query) {
     throw new Error('Could not fetch pokemon');
   }
   const data = await response.json();
+  // console.log(data.results);
   return data.results;
 }
 
 const getAllPokemonData = async function(query) {
-  let pokemonData = [];
-  await getAllPokemon(query)
-    .then(results => {
-      Object.values(results).forEach((poke) => {
-        getPokemonData(poke.url)
-          .then(data => pokemonData.push(data));
-      });
+  
+  const allPokeData = await getAllPokemon(query)
+    .then(async (results) => {
+  
+      const pokePromises = results.map(async (poke) => {
+        let data = await getPokemonData(poke.url);
+        return data;
+        });
+      const fullData = await Promise.all(pokePromises);
+      return fullData;
     });
-  return pokemonData;
+    return allPokeData;
+
+
 }
 
 const getPokemonData = async function(url) {
-  let pokeData = {};
-  await fetch(url)
+  
+  let pokeData = await fetch(url)
     .then(response =>  response.json())
     .then(data => {
-      pokeData.name = data.name;
-      pokeData.id = data.id;
+      let parsedData = {name: data.name, id: data.id};
+      return parsedData;
     });
   return pokeData;
 }
 
-const displayPokemon = function(query="") {
+const displayPokemon = async function(query="") {
+ 
+  let pokemon = await getAllPokemonData(query);
   
-  getAllPokemonData(query)
-    .then(pokemon => {
-      
-      console.log(pokemon)
-      console.log(typeof pokemon);
-      console.log(Array.isArray(pokemon));
-      console.log(pokemon.length);
-     
-    });
+  pokemon.forEach(poke => {
+    console.log(poke);
+  })
   
+
 }
 
 
@@ -69,6 +72,7 @@ const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
 
+
 searchButton.onclick = function(e) {
   e.preventDefault();
   console.log(searchInput.value);
@@ -76,5 +80,5 @@ searchButton.onclick = function(e) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  displayPokemon("?limit=2");
+  displayPokemon("?limit=15");
 });
