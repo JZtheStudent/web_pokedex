@@ -50,19 +50,15 @@ const getPokemonData = async function(url) {
 }
 
 const displayPokemon = function(query="") {
+  
   getAllPokemonData(query)
     .then(pokemon => {
-      console.log(pokemon);
+      
+      console.log(pokemon)
       console.log(typeof pokemon);
-      // const html = pokemon.map(poke => {
-        
-      //   return `
-      //     <li class="pokemon-list-item">
-      //       <span class="name">${poke.name}</span>
-      //     </li>
-      //   `;
-      // }).join('');
-      // pokemonList.innerHTML = html;
+      console.log(Array.isArray(pokemon));
+      console.log(pokemon.length);
+     
     });
   
 }
