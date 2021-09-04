@@ -16,33 +16,55 @@ const addItemToList = function(item) {
   pokemonList.appendChild(pokemonItem);
 }
 
-const getPokemon = async function(query) {
+const getAllPokemon = async function(query) {
   let url = pokeApi + query;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Could not fetch pokemon');
   }
   const data = await response.json();
-  return data
+  return data.results;
+}
+
+const getAllPokemonData = async function(query) {
+  let pokemonData = [];
+  await getAllPokemon(query)
+    .then(results => {
+      Object.values(results).forEach((poke) => {
+        getPokemonData(poke.url)
+          .then(data => pokemonData.push(data));
+      });
+    });
+  return pokemonData;
+}
+
+const getPokemonData = async function(url) {
+  let pokeData = {};
+  await fetch(url)
+    .then(response =>  response.json())
+    .then(data => {
+      pokeData.name = data.name;
+      pokeData.id = data.id;
+    });
+  return pokeData;
 }
 
 const displayPokemon = function(query="") {
-  pokemon = [];
-  getPokemon(query)
-    .then(data => {
-      pokemon.push(...data.results);
-      const html = pokemon.map(poke => {
-        return `
-          <li class="pokemon-list-item">
-            <span >${poke.name}</span>
-          </li>
-        `;
-      }).join('');
-      pokemonList.innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Something wrong with fetch', error);
-    })
+  getAllPokemonData(query)
+    .then(pokemon => {
+      console.log(pokemon);
+      console.log(typeof pokemon);
+      // const html = pokemon.map(poke => {
+        
+      //   return `
+      //     <li class="pokemon-list-item">
+      //       <span class="name">${poke.name}</span>
+      //     </li>
+      //   `;
+      // }).join('');
+      // pokemonList.innerHTML = html;
+    });
+  
 }
 
 
@@ -57,4 +79,6 @@ searchButton.onclick = function(e) {
   addItemToList(searchInput.value);
 }
 
-displayPokemon("?limit=5");
+window.addEventListener('DOMContentLoaded', () => {
+  displayPokemon("?limit=2");
+});
