@@ -1,20 +1,5 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/"
 
-const printSearchText = function() {
-  displaySuggestions(this.value);
-}
-
-const displaySuggestions = function(value) {
-  const html = `<li>${value}</li>`
-  suggestions.innerHTML = html;
-}
-
-const addItemToList = function(item) {
-  const pokemonItem = document.createElement('li');
-  pokemonItem.innerHTML = item;
-  pokemonItem.classList.add("pokemon-list-item");
-  pokemonList.appendChild(pokemonItem);
-}
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -65,6 +50,12 @@ const displayPokemon = async function(query="") {
   let pokemon = await getAllPokemonData(query);
   
   pokemon.forEach(poke => {
+    let pokeLink = document.createElement('a')
+    pokeLink.onclick = function(event) {
+      event.preventDefault();
+      goToPokemonDetails(poke.id);
+    }
+    
     let pokeListItem = document.createElement('li')
     pokeListItem.classList.add('pokemon-list-item');
     pokeListItem.id = poke.id;
@@ -81,11 +72,14 @@ const displayPokemon = async function(query="") {
 
     pokeListItem.appendChild(pokeImage);
     pokeListItem.appendChild(pokeName);
-    pokemonList.appendChild(pokeListItem);
+    pokeLink.appendChild(pokeListItem);
+    pokemonList.appendChild(pokeLink);
   
   });
-  
+}
 
+const goToPokemonDetails = function(id) {
+  console.log(id);
 }
 
 
@@ -93,7 +87,7 @@ const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
-const pokemonListItem = document.querySelectorAll(".pokemon-list-item");
+
 
 
 searchButton.onclick = function(e) {
@@ -102,10 +96,7 @@ searchButton.onclick = function(e) {
   addItemToList(searchInput.value);
 }
 
-pokemonListItem.onclick = function(e) {
-  console.log('hi');
-  console.log(this.id);
-}
+
 
 window.addEventListener('DOMContentLoaded', () => {
   displayPokemon("?limit=10");
