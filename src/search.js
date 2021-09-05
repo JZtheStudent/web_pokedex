@@ -69,7 +69,7 @@ const displayPokemon = async function(query="") {
     
     let pokeName = document.createElement('h1');
     pokeName.innerHTML = `${poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}`;
-
+    
     pokeListItem.appendChild(pokeImage);
     pokeListItem.appendChild(pokeName);
     pokeLink.appendChild(pokeListItem);
@@ -99,6 +99,6 @@ searchButton.onclick = function(e) {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  displayPokemon("?limit=10");
+  displayPokemon("?limit=150");
 });
 
