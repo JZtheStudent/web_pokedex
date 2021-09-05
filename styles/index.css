@@ -45,10 +45,21 @@ header {
 
 .pokemon-list-item {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   margin: 10px;
   padding: 10px;
   text-align: center;
   background-color: brown;
 }
+
+.pokemon-list-item:hover {
+  opacity: 70%;
+}
+
+.poke-image {
+  width: 250px;
+  margin: 3px;
+  padding: 3px;
+}
+

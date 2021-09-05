@@ -55,13 +55,35 @@ const getPokemonData = async function(url) {
   return pokeData;
 }
 
+const getPokemonImage = function(pokeImage, id) {
+
+  pokeImage.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
+}
+
 const displayPokemon = async function(query="") {
  
   let pokemon = await getAllPokemonData(query);
   
   pokemon.forEach(poke => {
-    console.log(poke);
-  })
+    let pokeListItem = document.createElement('li')
+    pokeListItem.classList.add('pokemon-list-item');
+    pokeListItem.id = poke.id;
+    
+    let pokeImage = document.createElement('img');
+    pokeImage.setAttribute('src', '');
+    getPokemonImage(pokeImage, poke.id);
+    pokeImage.setAttribute('alt', `${poke.name}-image`);
+    pokeImage.classList.add('poke-image');
+    
+    
+    let pokeName = document.createElement('h1');
+    pokeName.innerHTML = `${poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}`;
+
+    pokeListItem.appendChild(pokeImage);
+    pokeListItem.appendChild(pokeName);
+    pokemonList.appendChild(pokeListItem);
+  
+  });
   
 
 }
@@ -71,6 +93,7 @@ const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
+const pokemonListItem = document.querySelectorAll(".pokemon-list-item");
 
 
 searchButton.onclick = function(e) {
@@ -79,6 +102,12 @@ searchButton.onclick = function(e) {
   addItemToList(searchInput.value);
 }
 
+pokemonListItem.onclick = function(e) {
+  console.log('hi');
+  console.log(this.id);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  displayPokemon("?limit=15");
+  displayPokemon("?limit=10");
 });
+
