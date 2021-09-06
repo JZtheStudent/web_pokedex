@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(241, 236, 236);
+}
+
+.page-container {
+  width: 80%;
+  position: static;
+  margin: auto;
+ 
+  background-color: rgb(116, 151, 127);
+}
