@@ -1,4 +1,4 @@
-const pokeApi = "https://pokeapi.co/api/v2/pokemon/"
+const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
 
 const getAllPokemon = async function(query) {
@@ -53,7 +53,7 @@ const displayPokemon = async function(query="") {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
       event.preventDefault();
-      goToPokemonDetails(poke.id);
+      goToPokemonDetails(poke.name);
     }
     
     let pokeListItem = document.createElement('li')
@@ -78,8 +78,9 @@ const displayPokemon = async function(query="") {
   });
 }
 
-const goToPokemonDetails = function(id) {
-  console.log(id);
+const goToPokemonDetails = function(name) {
+  console.log(name);
+  window.location = `./pokemon_details.html?pokemon=${name}`;
 }
 
 
