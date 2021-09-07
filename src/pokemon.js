@@ -83,13 +83,38 @@ const loadEvolutionChain = async function(evo_url) {
     throw new Error('Could not fetch evolution chain');
   }
   const data = await response.json();
-  displayEvolutionChain(data);
+  getEvolutionChain(data);
 }
 
-const displayEvolutionChain = function(data) {
-  console.log(data);
-  let baseSpecies = [data.chain.species]
-  console.log(baseSpecies);
+const getEvolutionChain = function(data) {
+  let speciesList = [data.chain.species]
+  let evolutionChain = data.chain.evolves_to;
+  evolutionChain.forEach(evo => {
+    speciesList.push(evo.species);
+    evo.evolves_to.forEach(evo_evo => {
+      speciesList.push(evo_evo.species);
+    });
+  }); 
+  speciesList.forEach(species => {
+    species['id'] = getId(species.url);
+  });
+  displayEvolutionChain(speciesList);
 
+}
+
+const displayEvolutionChain = function(speciesList) {
+  console.log(speciesList);
+  let evoList = document.querySelector('.evo-list');
+  
+}
+
+const getId = function(url) {
+  let idString = "";
+  let idx = url.length - 2;
+  while (url.charAt(idx) !== "/") {
+    idString = url.charAt(idx) + idString;
+    idx -= 1;
+  };
+  return parseInt(idString);
 }
 loadPage();
