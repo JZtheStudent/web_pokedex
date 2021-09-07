@@ -79,7 +79,6 @@ const displayPokemon = async function(query="") {
 }
 
 const goToPokemonDetails = function(name) {
-  console.log(name);
   window.location = `./pokemon_details.html?pokemon=${name}`;
 }
 

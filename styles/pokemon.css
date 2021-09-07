@@ -74,3 +74,42 @@ body {
   margin: 10px;
   text-transform: uppercase;
 }
+
+.evo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: purple;
+}
+
+.evolutions-section {
+  background-color: lightblue;
+}
+
+.evo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: purple;
+}
+
+
+.evo-list-item {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: brown;
+}
+
+.evo-list-item:hover {
+  opacity: 70%;
+}
+
+.evo-image {
+  width: 250px;
+  margin: 3px;
+  padding: 3px;
+}

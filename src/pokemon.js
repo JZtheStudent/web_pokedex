@@ -105,7 +105,35 @@ const getEvolutionChain = function(data) {
 const displayEvolutionChain = function(speciesList) {
   console.log(speciesList);
   let evoList = document.querySelector('.evo-list');
+  speciesList.forEach(species => {
+    let evoLink = document.createElement('a');
+    evoLink.onclick = function(event) {
+      event.preventDefault();
+      goToPokemonDetails(species.name);
+    }
+    
+    let evoListItem = document.createElement('li');
+    evoListItem.classList.add('evo-list-item');
+    evoListItem.id = species.id;
   
+    let evoImage = document.createElement('img');
+    evoImage.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${species.id}.png`) 
+    evoImage.setAttribute('alt', `${species.name}-image`);
+    evoImage.classList.add('evo-image');
+
+    let evoName = document.createElement('h1');
+    evoName.innerHTML = `${species.name.charAt(0).toUpperCase() + species.name.slice(1)}`;
+  
+    evoListItem.appendChild(evoImage);
+    evoListItem.appendChild(evoName);
+    evoLink.appendChild(evoListItem);
+    evoList.appendChild(evoLink);
+
+  });
+}
+
+const goToPokemonDetails = function(name) {
+  window.location = `./pokemon_details.html?pokemon=${name}`;
 }
 
 const getId = function(url) {
