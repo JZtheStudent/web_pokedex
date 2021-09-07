@@ -1,6 +1,5 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
-
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
   const response = await fetch(url);
@@ -8,11 +7,10 @@ const getAllPokemon = async function(query) {
     throw new Error('Could not fetch pokemon');
   }
   const data = await response.json();
-  // console.log(data.results);
   return data.results;
 }
 
-const getAllPokemonData = async function(query) {
+const getPokemonDataFromQuery = async function(query) {
   
   const allPokeData = await getAllPokemon(query)
     .then(async (results) => {
@@ -45,10 +43,10 @@ const getPokemonImage = function(pokeImage, id) {
   pokeImage.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
 }
 
-const displayPokemon = async function(query="") {
- 
-  let pokemon = await getAllPokemonData(query);
+// Takes in an array
+const displayPokemon = async function(pokemon) {
   
+  clearPokeList();
   pokemon.forEach(poke => {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
@@ -78,26 +76,59 @@ const displayPokemon = async function(query="") {
   });
 }
 
+const defaultDisplay = async function() {
+  let defaultPokemon = await getPokemonDataFromQuery("?limit=150")
+  displayPokemon(defaultPokemon);
+}
+
 const goToPokemonDetails = function(name) {
   window.location = `./pokemon_details.html?pokemon=${name}`;
 }
 
+const searchForPokemon = async function(searchName) {
+  const url = pokeApi + searchName + '/';
+ 
+    const response = await fetch(url);
+    if (!response.ok) {
+      flashError('cannot find pokemon');
+    } else {
+      const data = await response.json();
+      let pokeData = {name: searchName, id: data.id}
+      displayPokemon([pokeData]);
+      
+    }
+    
+    
+}
+
+const flashError = function(message) {
+  console.log(message);
+}
+
+const clearPokeList = function() {
+  while (pokemonList.firstChild) {
+    pokemonList.removeChild( pokemonList.firstChild);
+  }
+}
 
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
 
-
-
 searchButton.onclick = function(e) {
   e.preventDefault();
-  addItemToList(searchInput.value);
+  if (searchInput.value === "") {
+    defaultDisplay();
+  } else {
+
+    searchForPokemon(searchInput.value.toLowerCase());
+    searchInput.value = "";
+  }
+  
 }
 
-
-
 window.addEventListener('DOMContentLoaded', () => {
-  displayPokemon("?limit=150");
+  defaultDisplay();
 });
 
