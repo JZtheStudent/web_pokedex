@@ -1,5 +1,7 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
-let currentPage = 1;
+
+const pokemonList = document.querySelector(".pokemon-list");
+
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -90,22 +92,7 @@ const goToPokemonDetails = function(name) {
   window.location = `./pokemon_details.html?pokemon=${name}`;
 }
 
-const searchForPokemon = async function(searchName) {
-  const url = pokeApi + searchName + '/';
- 
-    const response = await fetch(url);
-    if (!response.ok) {
-      flashError('cannot find pokemon');
-    } else {
-      const data = await response.json();
-      let pokeData = {name: searchName, id: data.id}
-      currentPage = 1;
-      displayPokemon([pokeData]);
-      
-    }
-    
-    
-}
+
 
 const flashError = function(message) {
   console.log(message);
@@ -123,28 +110,22 @@ const displayCurrentPage = function() {
 }
 
 
-const searchInput = document.querySelector(".search-input");
-const searchButton = document.querySelector(".search-button");
-const suggestions = document.querySelector(".suggestions");
-const pokemonList = document.querySelector(".pokemon-list");
 
 
-searchButton.onclick = function(e) {
-  e.preventDefault();
-  if (searchInput.value === "") {
-    defaultDisplay();
-  } else {
-    searchForPokemon(searchInput.value.toLowerCase());
-    searchInput.value = "";
-  }
+
+
+
+
+
+const hi = function() {
+  console.log('hi');
 }
-
-
 
 
 window.addEventListener('DOMContentLoaded', () => {
   currentPage = 1;
   console.log(currentPage);
+
   defaultDisplay();
 });
 
