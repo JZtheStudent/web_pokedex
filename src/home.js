@@ -1,4 +1,5 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
+let currentPage = 1;
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -46,7 +47,10 @@ const getPokemonImage = function(pokeImage, id) {
 // Takes in an array
 const displayPokemon = async function(pokemon) {
   
+  displayCurrentPage();
+
   clearPokeList();
+  
   pokemon.forEach(poke => {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
@@ -77,7 +81,8 @@ const displayPokemon = async function(pokemon) {
 }
 
 const defaultDisplay = async function() {
-  let defaultPokemon = await getPokemonDataFromQuery("?limit=150")
+  let defaultPokemon = await getPokemonDataFromQuery("?limit=50")
+  currentPage = 1;
   displayPokemon(defaultPokemon);
 }
 
@@ -94,6 +99,7 @@ const searchForPokemon = async function(searchName) {
     } else {
       const data = await response.json();
       let pokeData = {name: searchName, id: data.id}
+      currentPage = 1;
       displayPokemon([pokeData]);
       
     }
@@ -111,24 +117,34 @@ const clearPokeList = function() {
   }
 }
 
+const displayCurrentPage = function() {
+  let currentPageLabel = document.querySelector('.page-number');
+  currentPageLabel.innerHTML = currentPage;
+}
+
+
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 const suggestions = document.querySelector(".suggestions");
 const pokemonList = document.querySelector(".pokemon-list");
+
 
 searchButton.onclick = function(e) {
   e.preventDefault();
   if (searchInput.value === "") {
     defaultDisplay();
   } else {
-
     searchForPokemon(searchInput.value.toLowerCase());
     searchInput.value = "";
   }
-  
 }
 
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
+  currentPage = 1;
+  console.log(currentPage);
   defaultDisplay();
 });
 

@@ -30,6 +30,22 @@ header {
   border-bottom: 2px solid;
 }
 
+.page-section {
+  position: relative;
+  right: 100px;
+  display: flex;
+}
+
+.page-section > * {
+  margin-left: 10px;
+}
+
+.page-number {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+
 .pokemon-section {
   background-color: lightblue;
 }
