@@ -74,7 +74,22 @@ const loadSpecies = async function(species_url) {
     throw new Error('Could not fetch species');
   }
   const data = await response.json();
-  console.log(data);
+  loadEvolutionChain(data.evolution_chain.url);
 }
 
+const loadEvolutionChain = async function(evo_url) {
+  const response = await fetch(evo_url);
+  if (!response.ok) {
+    throw new Error('Could not fetch evolution chain');
+  }
+  const data = await response.json();
+  displayEvolutionChain(data);
+}
+
+const displayEvolutionChain = function(data) {
+  console.log(data);
+  let baseSpecies = [data.chain.species]
+  console.log(baseSpecies);
+
+}
 loadPage();
