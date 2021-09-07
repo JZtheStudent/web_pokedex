@@ -92,7 +92,6 @@ const pokemonList = document.querySelector(".pokemon-list");
 
 searchButton.onclick = function(e) {
   e.preventDefault();
-  console.log(searchInput.value);
   addItemToList(searchInput.value);
 }
 

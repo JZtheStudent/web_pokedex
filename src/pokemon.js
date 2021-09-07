@@ -145,4 +145,11 @@ const getId = function(url) {
   };
   return parseInt(idString);
 }
+
+let goHomeButton = document.querySelector('.go-home-button');
+goHomeButton.onclick = function(e) {
+  e.preventDefault();
+  window.location = './index.html';
+}
+
 loadPage();
