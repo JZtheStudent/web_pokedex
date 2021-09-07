@@ -3,11 +3,24 @@ const nextButton = document.querySelector('.page-next-button');
 
 
 let currentPage = 1;
-
+let itemsPerPage = 50;
 
 prevButton.onclick = function(e) {
   e.preventDefault();
+  currentPage--;
+  updateList();
+}
 
+nextButton.onclick = function(e) {
+  e.preventDefault();
+  currentPage++;
+  updateList();
+}
+
+const updateList = async function() {
+  let offset = (currentPage - 1) * itemsPerPage;
+  let newPokemon = await getPokemonDataFromQuery(`?offset=${offset}&limit=${itemsPerPage}`);
+  displayPokemon(newPokemon);
 }
 
 const validatePrevButton = function() {

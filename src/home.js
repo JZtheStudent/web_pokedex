@@ -93,14 +93,14 @@ const displayPokemon = async function(pokemon) {
     pokemonList.appendChild(pokeLink);
   
   });
-  
+
   validatePrevButton();
   validateNextButton();
   
 }
 
 const defaultDisplay = async function() {
-  let defaultPokemon = await getPokemonDataFromQuery("?limit=50")
+  let defaultPokemon = await getPokemonDataFromQuery(`?limit=${itemsPerPage}`)
   currentPage = 1;
   displayPokemon(defaultPokemon);
 }
