@@ -1,7 +1,23 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
 const pokemonList = document.querySelector(".pokemon-list");
+const searchInput = document.querySelector(".search-input");
+const searchButton = document.querySelector(".search-button");
 
+
+const searchForPokemon = async function(searchName) {
+  const url = pokeApi + searchName + '/';
+ 
+    const response = await fetch(url);
+    if (!response.ok) {
+      flashError('cannot find pokemon');
+    } else {
+      const data = await response.json();
+      let pokeData = {name: searchName, id: data.id}
+      currentPage = 1;
+      displayPokemon([pokeData]);
+    }
+}
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -26,8 +42,6 @@ const getPokemonDataFromQuery = async function(query) {
       return fullData;
     });
     return allPokeData;
-
-
 }
 
 const getPokemonData = async function(url) {
@@ -42,7 +56,6 @@ const getPokemonData = async function(url) {
 }
 
 const getPokemonImage = function(pokeImage, id) {
-
   pokeImage.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
 }
 
@@ -50,10 +63,10 @@ const getPokemonImage = function(pokeImage, id) {
 const displayPokemon = async function(pokemon) {
   
   displayCurrentPage();
-
+  
   clearPokeList();
   
-  pokemon.forEach(poke => {
+  await pokemon.forEach(poke => {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
       event.preventDefault();
@@ -80,6 +93,10 @@ const displayPokemon = async function(pokemon) {
     pokemonList.appendChild(pokeLink);
   
   });
+  
+  validatePrevButton();
+  validateNextButton();
+  
 }
 
 const defaultDisplay = async function() {
@@ -110,22 +127,10 @@ const displayCurrentPage = function() {
 }
 
 
-
-
-
-
-
-
-
-const hi = function() {
-  console.log('hi');
-}
-
-
 window.addEventListener('DOMContentLoaded', () => {
   currentPage = 1;
   console.log(currentPage);
-
   defaultDisplay();
+ 
 });
 
