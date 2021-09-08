@@ -20,7 +20,7 @@ const getPokemonDataFromQuery = async function(query) {
       const pokePromises = results.map(async (poke) => {
         let data = await getPokemonData(poke.url);
         return data;
-        });
+      });
       const fullData = await Promise.all(pokePromises);
       return fullData;
     });
@@ -44,9 +44,7 @@ const getPokemonImage = function(pokeImage, id) {
 
 // Takes in an array
 const displayPokemon = async function(pokemon) {
-  
   displayCurrentPage();
-  
   clearPokeList();
   
   await pokemon.forEach(poke => {

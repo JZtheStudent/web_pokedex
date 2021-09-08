@@ -1,3 +1,4 @@
+const pokeApiTypes = 'https://pokeapi.co/api/v2/type/';
 const typesList = document.querySelector('.types-list');
 
 const types = [
@@ -60,5 +61,52 @@ const handleTypeClicked = function(typeLink, name) {
     let idx = selectedTypes.indexOf(name);
     selectedTypes.splice(idx, 1);
   }
-  console.log(selectedTypes);
+  
+  getPokemonOfTypes();
+}
+
+const getPokemonOfTypes = async function() {
+  
+  let typePromises = await selectedTypes.map(async (type) => {
+    let response = await fetch(`${pokeApiTypes}${type}`);
+    let data = await response.json();
+    return data;
+  });
+  
+  const fullData = await Promise.all(typePromises);
+  let allArraysOfPokemon = fullData.map(typeInfo => {
+    return typeInfo.pokemon;
+  });
+  
+  allArraysOfPokemon.forEach((array) => {
+    // console.log(array);
+    for (let i = 0; i < array.length; ++i) {
+      let name = array[i].pokemon.name;
+      let id = getId(array[i].pokemon.url);
+      array[i] = {name: name, id: id};
+    }
+  });
+  
+  filterPokemon(allArraysOfPokemon);
+}
+
+const filterPokemon = function(allArrays) {
+  if (!allArrays.length) defaultDisplay();
+  if (allArrays.length == 1) return displayPokemon(allArrays[0]);
+
+}
+
+
+
+
+
+
+const getId = function(url) {
+  let idString = "";
+  let idx = url.length - 2;
+  while (url.charAt(idx) !== "/") {
+    idString = url.charAt(idx) + idString;
+    idx -= 1;
+  };
+  return parseInt(idString);
 }
