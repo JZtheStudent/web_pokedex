@@ -108,7 +108,7 @@ const filterPokemon = function(allArrays) {
     }
     pokemon = filtered;
   }
-  
+  currentPage = 1;
   displayPokemon();
 }
 

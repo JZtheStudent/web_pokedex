@@ -25,7 +25,8 @@ const updateList = async function() {
       displayPokemon();
     });
   } else {
-    displayPokemon();
+    currentPokemon = pokemon.slice(offset, offset + itemsPerPage);
+    displayPokemon(currentPokemon);
   }
   
   

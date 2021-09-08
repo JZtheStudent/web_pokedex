@@ -44,11 +44,11 @@ const getPokemonImage = function(pokeImage, id) {
 }
 
 // Takes in an array
-const displayPokemon = async function() {
+const displayPokemon = async function(poke = pokemon) {
   displayCurrentPage();
   clearPokeList();
   
-  await pokemon.forEach(poke => {
+  await poke.forEach(poke => {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
       event.preventDefault();
