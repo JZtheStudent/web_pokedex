@@ -10,6 +10,7 @@ const searchForPokemon = async function(searchName) {
       flashError('cannot find pokemon');
     } else {
       const data = await response.json();
+      
       let pokeData = {name: searchName, id: data.id}
       currentPage = 1;
       displayPokemon('home', [pokeData]);

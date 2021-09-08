@@ -19,3 +19,17 @@ const clearPokeList = function(list) {
     list.removeChild( list.firstChild);
   }
 }
+
+const fetchTypes = async function(id) {
+  let response = await fetch(`${pokeApi}${id}`);
+  let data = await response.json();
+  console.log(data);
+}
+
+const getTypes = function(data) {
+  let pokeTypes = data.types;
+  for (let i = 0; i < pokeTypes.length; ++i) {
+    pokeTypes[i] = pokeTypes[i].type.name;
+  };
+  return pokeTypes;
+}

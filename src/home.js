@@ -34,11 +34,7 @@ const getPokemonData = async function(url) {
   let pokeData = await fetch(url)
     .then(response =>  response.json())
     .then(data => {
-      let pokeTypes = data.types;
-      for (let i = 0; i < pokeTypes.length; ++i) {
-        pokeTypes[i] = pokeTypes[i].type.name;
-      }
-      let parsedData = {name: data.name, id: data.id, types: pokeTypes};
+      let parsedData = {name: data.name, id: data.id};
       return parsedData;
     });
   return pokeData;
@@ -59,7 +55,7 @@ const displayPokemon = async function(where, poke = pokemon) {
   displayCurrentPage();
   clearPokeList(pokeList);
   
-  await poke.forEach(poke => {
+  poke.forEach(poke => {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
       event.preventDefault();

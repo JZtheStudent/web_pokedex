@@ -157,12 +157,6 @@ header {
   display: none;
 }
 
-/* .show-page-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
 
 .show-page-title {
   text-align: center;
@@ -192,6 +186,13 @@ header {
   margin-bottom: 50px;
 }
 
+.show-poke-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .show-poke-image {
   width: 90%;
   margin: 5px;
@@ -204,15 +205,14 @@ header {
   flex-direction: column;
   background-color: lightblue;
   margin: 10px;
+  margin-bottom: 30px;
   padding: 10px;
 }
 
 .show-types-header {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 30px;
   text-align: center;
-  border-bottom: 2px solid black;
-  background-color: white;
   margin-bottom: 10px;
 }
 
@@ -221,9 +221,33 @@ header {
   text-align: center;
 }
 
-.show-type-item {
+.show-type-img {
+  width: 40px;
+}
+
+.show-type-item-text {
   margin: 10px;
   text-transform: uppercase;
+  font-size: 25px;
+}
+
+.flavor-text-section {
+  margin: 30px;
+  padding: 20px;
+  width: 60%;
+}
+
+.flavor-text-title {
+  font-weight: 600;
+  font-size: 30px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.flavor-text {
+  text-align: center;
+  font-size: 18px;
 }
 
 .show-evo-list {

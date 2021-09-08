@@ -77,7 +77,6 @@ const getPokemonOfTypes = async function() {
   let typePromises = await selectedTypes.map(async (type) => {
     let response = await fetch(`${pokeApiTypes}${type}`);
     let data = await response.json();
-    
     return data;
   });
   
@@ -85,6 +84,7 @@ const getPokemonOfTypes = async function() {
   let allArraysOfPokemon = fullData.map(typeInfo => {
     return typeInfo.pokemon;
   });
+  
   
   allArraysOfPokemon.forEach((array) => {
     for (let i = 0; i < array.length; ++i) {
@@ -109,9 +109,11 @@ const filterPokemon = function(allArrays) {
     }
     pokemon = filtered;
   }
-  currentPage = 1;
   displayPokemon('home');
 }
+
+
+
 
 const intersection = function(a, b) {
   return a.filter(item1 => b.some(item2 => item1.id === item2.id));

@@ -4,6 +4,7 @@ let backButton = document.querySelector('.back-button');
 let homeButton = document.querySelector('.home-button');
 let showEvoList = document.querySelector('.show-evo-list')
 
+const pokeApiSpecies = 'https://pokeapi.co/api/v2/pokemon-species/'
 let showStack = [];
 
 backButton.onclick = function(e) {
@@ -35,7 +36,6 @@ const addToShowStack = function(poke) {
 }
 
 const updateShowPage = function() {
-  console.log(showStack);
   if (!showStack.length) {
     toggleShowPage();
   } else {
@@ -92,6 +92,7 @@ const displayTypes = function(data) {
   typesHeader.innerHTML = 'Types';
   typesHeader.classList.add('show-types-header');
   typesContainer.appendChild(typesHeader);
+
   let typesList = document.createElement('ul');
   typesList.classList.add('show-types-list');
   typesContainer.appendChild(typesList);
@@ -99,11 +100,29 @@ const displayTypes = function(data) {
   let currentTypes = data.types.map(item => item.type.name);
   currentTypes.forEach(type => {
     let typeItem = document.createElement('li');
-    typeItem.innerHTML = type;
     typeItem.classList.add('show-type-item');
+    
+    let typeImg = document.createElement('img');
+    typeImg.setAttribute('src', types[type]);
+    typeImg.setAttribute('alt', `${type}-image`)
+    typeImg.classList.add('show-type-img')
+
+    let typeItemText = document.createElement('p');
+    typeItemText.innerHTML = type;
+    typeItemText.classList.add('show-type-item-text');
+    
+    typeItem.appendChild(typeImg);
+    typeItem.appendChild(typeItemText);
+
     typesList.appendChild(typeItem); 
   });
 }
+
+const displayFlavorText = function(flavorTextString) {
+  let flavorText = document.querySelector('.flavor-text');
+  flavorText.innerHTML = flavorTextString;
+}
+
 
 const loadSpecies = async function(species_url) {
   const response = await fetch(species_url);
@@ -111,6 +130,7 @@ const loadSpecies = async function(species_url) {
     throw new Error('Could not fetch species');
   }
   const data = await response.json();
+  displayFlavorText(data.flavor_text_entries[0].flavor_text);
   loadEvolutionChain(data.evolution_chain.url);
 }
 
