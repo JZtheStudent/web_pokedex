@@ -90,17 +90,17 @@ const displayTypes = function(data) {
   removeAllChildNodes(typesContainer);
   let typesHeader = document.createElement('h3');
   typesHeader.innerHTML = 'Types';
-  typesHeader.classList.add('types-header');
+  typesHeader.classList.add('show-types-header');
   typesContainer.appendChild(typesHeader);
   let typesList = document.createElement('ul');
-  typesList.classList.add('types-list');
+  typesList.classList.add('show-types-list');
   typesContainer.appendChild(typesList);
   
   let currentTypes = data.types.map(item => item.type.name);
   currentTypes.forEach(type => {
     let typeItem = document.createElement('li');
     typeItem.innerHTML = type;
-    typeItem.classList.add('type-item');
+    typeItem.classList.add('show-type-item');
     typesList.appendChild(typeItem); 
   });
 }

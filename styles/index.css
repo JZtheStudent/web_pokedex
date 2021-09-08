@@ -145,22 +145,90 @@ header {
 /* MAIN PAGE ENDS HERE */
 
 /* SHOW PAGE BEGINS HERE */
+.nav-buttons-container {
+  
+  width: 95%;
+  
+  padding: 10px;
+  border-bottom: 2px solid;
+}
 
 .show-page-container.hidden {
   display: none;
 }
 
-.show-page-container {
+/* .show-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+.show-page-title {
+  text-align: center;
+  padding: 30px;
+  margin: 0px 0px 15px 0px;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.show-poke-info-section {
+  background-color: rosybrown;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.back-button-container {
+.show-poke-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  background-color: blueviolet;
   
-  width: 95%;
-  
+  margin: 10px;
   padding: 10px;
-  border-bottom: 2px solid;
+  margin-bottom: 50px;
+}
+
+.show-poke-image {
+  width: 90%;
+  margin: 5px;
+  padding: 5px;
+  background-color:rgb(207, 44, 44)
+}
+
+.show-types-container {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  margin: 10px;
+  padding: 10px;
+}
+
+.show-types-header {
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 2px solid black;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.show-types-list {
+  display: flex;
+  text-align: center;
+}
+
+.show-type-item {
+  margin: 10px;
+  text-transform: uppercase;
+}
+
+.show-evo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: purple;
 }
