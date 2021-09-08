@@ -34,7 +34,11 @@ const getPokemonData = async function(url) {
   let pokeData = await fetch(url)
     .then(response =>  response.json())
     .then(data => {
-      let parsedData = {name: data.name, id: data.id};
+      let pokeTypes = data.types;
+      for (let i = 0; i < pokeTypes.length; ++i) {
+        pokeTypes[i] = pokeTypes[i].type.name;
+      }
+      let parsedData = {name: data.name, id: data.id, types: pokeTypes};
       return parsedData;
     });
   return pokeData;
