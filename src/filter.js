@@ -1,24 +1,24 @@
 const typesList = document.querySelector('.types-list');
 
 const types = [
-  {name: 'normal'},
-  {name: 'fire'},
-  {name: 'water'},
-  {name: 'grass'},
-  {name: 'electric'},
-  {name: 'ice'},
-  {name: 'fighting'},
-  {name: 'poison'},
-  {name: 'ground'},
-  {name: 'flying'},
-  {name: 'psychic'},
-  {name: 'bug'},
-  {name: 'rock'},
-  {name: 'ghost'},
-  {name: 'dark'},
-  {name: 'dragon'},
-  {name: 'steel'},
-  {name: 'fairy'}
+  {name: 'normal', src: '../images/types/normal.png'},
+  {name: 'fire', src: '../images/types/fire.png'},
+  {name: 'water', src: '../images/types/water.png'},
+  {name: 'grass', src: '../images/types/grass.png'},
+  {name: 'electric', src: '../images/types/electric.png'},
+  {name: 'ice', src: '../images/types/ice.png'},
+  {name: 'fighting', src: '../images/types/fighting.png'},
+  {name: 'poison', src: '../images/types/poison.png'},
+  {name: 'ground', src: '../images/types/ground.png'},
+  {name: 'flying', src: '../images/types/flying.png'},
+  {name: 'psychic', src: '../images/types/psychic.png'},
+  {name: 'bug', src: '../images/types/bug.png'},
+  {name: 'rock', src: '../images/types/rock.png'},
+  {name: 'ghost', src: '../images/types/ghost.png'},
+  {name: 'dark', src: '../images/types/dark.png'},
+  {name: 'dragon', src: '../images/types/dragon.png'},
+  {name: 'steel', src: '../images/types/steel.png'},
+  {name: 'fairy', src: '../images/types/fairy.png'}
 ]
 
 let selectedTypes = [];
@@ -34,7 +34,7 @@ const populateTypesList = function() {
       e.preventDefault();
       console.log(type.name);
     }
-
+    
     let typeImg = document.createElement('img');
     typeImg.classList.add('type-img');
     typeImg.setAttribute('src', type.src);

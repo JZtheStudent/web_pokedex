@@ -76,7 +76,8 @@ header {
 }
 
 .type-img {
-  
+  width: 50px;
+  text-align: center;
 }
 
 .pokemon-section {
