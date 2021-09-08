@@ -63,12 +63,32 @@ header {
 }
 
 .type-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-right: 30px;
   margin-top: 30px;
 }
 
 .type-link:hover {
   cursor: pointer;
+}
+
+.type-link.unselected > img {
+  opacity: 40%;
+}
+
+.type-link > img {
+  opacity: 100%
+}
+
+.type-link.unselected > img:hover {
+  opacity: 100%;
+}
+
+.type-link > img:hover {
+  opacity: 40%;
 }
 
 .type-label {

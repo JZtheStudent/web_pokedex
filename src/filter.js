@@ -29,10 +29,10 @@ const populateTypesList = function() {
     typeListItem.classList.add('type-list-item');
 
     let typeLink = document.createElement('a');
-    typeLink.classList.add('type-link');
+    typeLink.classList.add('type-link', 'unselected');
     typeLink.onclick = function(e) {
       e.preventDefault();
-      console.log(type.name);
+      handleTypeClicked(typeLink, type.name);
     }
     
     let typeImg = document.createElement('img');
@@ -49,4 +49,16 @@ const populateTypesList = function() {
     typeListItem.appendChild(typeLabel);
     typesList.appendChild(typeListItem);
   });
+}
+
+const handleTypeClicked = function(typeLink, name) {
+  if (typeLink.classList.contains('unselected')) {
+    typeLink.classList.remove('unselected');
+    selectedTypes.push(name);
+  } else {
+    typeLink.classList.add('unselected');
+    let idx = selectedTypes.indexOf(name);
+    selectedTypes.splice(idx, 1);
+  }
+  console.log(selectedTypes);
 }
