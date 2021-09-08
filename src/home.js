@@ -1,23 +1,6 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
-const pokemonList = document.querySelector(".pokemon-list");
-const searchInput = document.querySelector(".search-input");
-const searchButton = document.querySelector(".search-button");
 
-
-const searchForPokemon = async function(searchName) {
-  const url = pokeApi + searchName + '/';
- 
-    const response = await fetch(url);
-    if (!response.ok) {
-      flashError('cannot find pokemon');
-    } else {
-      const data = await response.json();
-      let pokeData = {name: searchName, id: data.id}
-      currentPage = 1;
-      displayPokemon([pokeData]);
-    }
-}
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -129,7 +112,9 @@ const displayCurrentPage = function() {
 
 window.addEventListener('DOMContentLoaded', () => {
   currentPage = 1;
-  console.log(currentPage);
+  selectedTypes = [];
+
+  populateTypesList();
   defaultDisplay();
  
 });

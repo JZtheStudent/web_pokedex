@@ -22,7 +22,7 @@ header {
 }
 
 
-.search-filter-section {
+.search-page-section {
   display: flex;
   justify-content: space-between;
   margin: 10px;
@@ -32,7 +32,6 @@ header {
 
 .page-section {
   position: relative;
-  right: 100px;
   display: flex;
 }
 
@@ -45,6 +44,40 @@ header {
   font-size: 20px;
 }
 
+.filter-section {
+  display: flex;
+  background-color: lightblue;
+  
+  padding: 50px;
+}
+
+.types-list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.types-list {
+  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-list-item {
+  margin-right: 30px;
+  margin-top: 30px;
+}
+
+.type-link:hover {
+  cursor: pointer;
+}
+
+.type-label {
+  text-transform: uppercase;
+}
+
+.type-img {
+  
+}
 
 .pokemon-section {
   background-color: lightblue;

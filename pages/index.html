@@ -10,7 +10,7 @@
   <script type="text/javascript" src="../src/home.js" defer></script>
   <script type="text/javascript" src="../src/pagination.js" defer></script>
   <script type="text/javascript" src="../src/search.js" defer></script>
-  <script type="text/javascript" src="../src/search.js" defer></script>
+  <script type="text/javascript" src="../src/filter.js" defer></script>
 
   
   <title>Web Pokedex</title>
@@ -22,7 +22,7 @@
       <h1 id="page-title">Web Pokedex</h1>
     </header>
     
-    <section class="search-filter-section">
+    <section class="search-page-section">
       <div id="search-section">
         <form id="search-form">
             <input type="text" class="search-input"  placeholder="Search for a Pokemon!">
@@ -37,12 +37,18 @@
         <button class="page-next-button">Next</button>
       </div>
 
-      <div id="filter-section">
-        <h2>Filter</h2>
-      </div>
+      
     
     </section>
     
+    <section class="filter-section">
+      <div class="types-list-container">
+        <ul class="types-list"></ul>
+      </div>
+      
+    
+    </section>
+
     <section class="pokemon-section">
       <ul class="pokemon-list">
         
