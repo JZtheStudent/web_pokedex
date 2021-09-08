@@ -79,7 +79,6 @@ const getPokemonOfTypes = async function() {
   });
   
   allArraysOfPokemon.forEach((array) => {
-    // console.log(array);
     for (let i = 0; i < array.length; ++i) {
       let name = array[i].pokemon.name;
       let id = getId(array[i].pokemon.url);
@@ -93,10 +92,16 @@ const getPokemonOfTypes = async function() {
 const filterPokemon = function(allArrays) {
   if (!allArrays.length) defaultDisplay();
   if (allArrays.length == 1) return displayPokemon(allArrays[0]);
-
+  let filtered = allArrays[0];
+  for (let i = 1; i < allArrays.length; ++i) {
+    filtered = intersection(filtered, allArrays[i]);
+  }
+  displayPokemon(filtered);
 }
 
-
+const intersection = function(a, b) {
+  return a.filter(item1 => b.some(item2 => item1.id === item2.id));
+};
 
 
 
