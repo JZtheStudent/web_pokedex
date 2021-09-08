@@ -85,7 +85,6 @@ const defaultDisplay = async function() {
   pokemon = await getPokemonDataFromQuery(`?limit=${itemsPerPage}`)
     .then(() => {
       currentPage = 1;
-      console.log(pokemon);
       displayPokemon();
     });
   
