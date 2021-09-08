@@ -1,6 +1,7 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
 let pokemon = [];
+const pokemonList = document.querySelector(".pokemon-list");
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -44,9 +45,15 @@ const getPokemonImage = function(pokeImage, id) {
 }
 
 // Takes in an array
-const displayPokemon = async function(poke = pokemon) {
+const displayPokemon = async function(where, poke = pokemon) {
+  if (where === 'home') {
+    pokeList = pokemonList;
+  } else {
+    pokeList = showEvoList;
+  }
+  
   displayCurrentPage();
-  clearPokeList();
+  clearPokeList(pokeList);
   
   await poke.forEach(poke => {
     let pokeLink = document.createElement('a')
@@ -72,7 +79,7 @@ const displayPokemon = async function(poke = pokemon) {
     pokeListItem.appendChild(pokeImage);
     pokeListItem.appendChild(pokeName);
     pokeLink.appendChild(pokeListItem);
-    pokemonList.appendChild(pokeLink);
+    pokeList.appendChild(pokeLink);
   
   });
 
@@ -85,7 +92,7 @@ const defaultDisplay = async function() {
   pokemon = await getPokemonDataFromQuery(`?limit=${itemsPerPage}`)
     .then(() => {
       currentPage = 1;
-      displayPokemon();
+      displayPokemon('home');
     });
   
 }
@@ -101,11 +108,7 @@ const flashError = function(message) {
   console.log(message);
 }
 
-const clearPokeList = function() {
-  while (pokemonList.firstChild) {
-    pokemonList.removeChild( pokemonList.firstChild);
-  }
-}
+
 
 const displayCurrentPage = function() {
   let currentPageLabel = document.querySelector('.page-number');

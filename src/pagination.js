@@ -22,11 +22,11 @@ const updateList = async function() {
   if (!filtersEnabled) {
     await getPokemonDataFromQuery(`?offset=${offset}&limit=${itemsPerPage}`)
     .then(() => {
-      displayPokemon();
+      displayPokemon('home');
     });
   } else {
     currentPokemon = pokemon.slice(offset, offset + itemsPerPage);
-    displayPokemon(currentPokemon);
+    displayPokemon('home', currentPokemon);
   }
   
   

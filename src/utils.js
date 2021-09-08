@@ -13,3 +13,9 @@ const removeAllChildNodes = function(parent) {
     parent.removeChild(parent.firstChild);
   }
 }
+
+const clearPokeList = function(list) {
+  while (list.firstChild) {
+    list.removeChild( list.firstChild);
+  }
+}

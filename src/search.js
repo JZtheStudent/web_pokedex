@@ -1,4 +1,3 @@
-const pokemonList = document.querySelector(".pokemon-list");
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-button");
 
@@ -13,7 +12,7 @@ const searchForPokemon = async function(searchName) {
       const data = await response.json();
       let pokeData = {name: searchName, id: data.id}
       currentPage = 1;
-      displayPokemon([pokeData]);
+      displayPokemon('home', [pokeData]);
     }
 }
 

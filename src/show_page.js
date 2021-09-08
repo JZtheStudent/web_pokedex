@@ -2,6 +2,7 @@ let mainPageContainer = document.querySelector('.main-page-container');
 let showPageContainer = document.querySelector('.show-page-container');
 let backButton = document.querySelector('.back-button');
 let homeButton = document.querySelector('.home-button');
+let showEvoList = document.querySelector('.show-evo-list')
 
 let showStack = [];
 
@@ -103,3 +104,38 @@ const displayTypes = function(data) {
     typesList.appendChild(typeItem); 
   });
 }
+
+const loadSpecies = async function(species_url) {
+  const response = await fetch(species_url);
+  if (!response.ok) {
+    throw new Error('Could not fetch species');
+  }
+  const data = await response.json();
+  loadEvolutionChain(data.evolution_chain.url);
+}
+
+const loadEvolutionChain = async function(evo_url) {
+  const response = await fetch(evo_url);
+  if (!response.ok) {
+    throw new Error('Could not fetch evolution chain');
+  }
+  const data = await response.json();
+  getEvolutionChain(data);
+}
+
+const getEvolutionChain = function(data) {
+  let speciesList = [data.chain.species]
+  let evolutionChain = data.chain.evolves_to;
+  evolutionChain.forEach(evo => {
+    speciesList.push(evo.species);
+    evo.evolves_to.forEach(evo_evo => {
+      speciesList.push(evo_evo.species);
+    });
+  }); 
+  speciesList.forEach(species => {
+    species['id'] = getId(species.url);
+  });
+  displayPokemon('show', speciesList);
+}
+
+

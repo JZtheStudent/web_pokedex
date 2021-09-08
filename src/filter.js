@@ -110,7 +110,7 @@ const filterPokemon = function(allArrays) {
     pokemon = filtered;
   }
   currentPage = 1;
-  displayPokemon();
+  displayPokemon('home');
 }
 
 const intersection = function(a, b) {
