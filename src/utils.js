@@ -7,3 +7,9 @@ const getId = function(url) {
   };
   return parseInt(idString);
 }
+
+const removeAllChildNodes = function(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}

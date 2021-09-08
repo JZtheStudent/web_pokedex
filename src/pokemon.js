@@ -58,7 +58,7 @@ const displayTypes = function(data) {
   let typesList = document.createElement('ul');
   typesList.classList.add('types-list');
   typesContainer.appendChild(typesList);
-
+  
   types = data.types.map(item => item.type.name);
   types.forEach(type => {
     let typeItem = document.createElement('li');

@@ -52,7 +52,7 @@ const displayPokemon = async function(poke = pokemon) {
     let pokeLink = document.createElement('a')
     pokeLink.onclick = function(event) {
       event.preventDefault();
-      goToPokemonDetails(poke.name);
+      goToPokemonDetails(poke.name, poke.id);
     }
     
     let pokeListItem = document.createElement('li')
@@ -90,8 +90,9 @@ const defaultDisplay = async function() {
   
 }
 
-const goToPokemonDetails = function(name) {
-  window.location = `./pokemon_details.html?pokemon=${name}`;
+const goToPokemonDetails = function(name, id) {
+  // window.location = `./pokemon_details.html?pokemon=${name}`;
+  addToShowStack({name: name, id: id});
 }
 
 
@@ -115,7 +116,9 @@ const displayCurrentPage = function() {
 window.addEventListener('DOMContentLoaded', () => {
   currentPage = 1;
   selectedTypes = [];
+  
 
+  showPageContainer.classList.add('hidden');
   populateTypesList();
   defaultDisplay();
  
