@@ -44,7 +44,7 @@ const getPokemonImage = function(pokeImage, id) {
   pokeImage.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
 }
 
-// Takes in an array
+
 const displayPokemon = async function(where, poke = pokemon) {
   if (where === 'home') {
     pokeList = pokemonList;
@@ -98,7 +98,6 @@ const defaultDisplay = async function() {
 }
 
 const goToPokemonDetails = function(name, id) {
-  // window.location = `./pokemon_details.html?pokemon=${name}`;
   addToShowStack({name: name, id: id});
 }
 
