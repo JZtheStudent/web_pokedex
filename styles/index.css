@@ -21,6 +21,12 @@ header {
   background-color: rgb(116, 151, 127);
 }
 
+/* MAIN PAGE STARTS HERE */
+
+.main-page-container.hidden {
+  display: none;
+}
+
 
 .search-page-section {
   display: flex;
@@ -133,3 +139,5 @@ header {
   padding: 3px;
 }
 
+
+/* MAIN PAGE ENDS HERE */
