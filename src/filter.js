@@ -1,6 +1,8 @@
 const pokeApiTypes = 'https://pokeapi.co/api/v2/type/';
 const typesList = document.querySelector('.types-list');
 
+let filtersEnabled = false;
+
 const types = [
   {name: 'normal', src: '../images/types/normal.png'},
   {name: 'fire', src: '../images/types/fire.png'},
@@ -56,10 +58,15 @@ const handleTypeClicked = function(typeLink, name) {
   if (typeLink.classList.contains('unselected')) {
     typeLink.classList.remove('unselected');
     selectedTypes.push(name);
+    filtersEnabled = true;
   } else {
     typeLink.classList.add('unselected');
     let idx = selectedTypes.indexOf(name);
     selectedTypes.splice(idx, 1);
+    if (!selectedTypes.length) {
+      filtersEnabled = false;
+      defaultDisplay();
+    }
   }
   
   getPokemonOfTypes();
@@ -90,13 +97,19 @@ const getPokemonOfTypes = async function() {
 }
 
 const filterPokemon = function(allArrays) {
-  if (!allArrays.length) defaultDisplay();
-  if (allArrays.length == 1) return displayPokemon(allArrays[0]);
-  let filtered = allArrays[0];
-  for (let i = 1; i < allArrays.length; ++i) {
-    filtered = intersection(filtered, allArrays[i]);
+  if (!allArrays.length) {
+    pokemon = [];
+  } else if (allArrays.length == 1) {
+    pokemon = allArrays[0];
+  } else {
+    let filtered = allArrays[0];
+    for (let i = 1; i < allArrays.length; ++i) {
+      filtered = intersection(filtered, allArrays[i]);
+    }
+    pokemon = filtered;
   }
-  displayPokemon(filtered);
+  
+  displayPokemon();
 }
 
 const intersection = function(a, b) {

@@ -19,8 +19,16 @@ nextButton.onclick = function(e) {
 
 const updateList = async function() {
   let offset = (currentPage - 1) * itemsPerPage;
-  let newPokemon = await getPokemonDataFromQuery(`?offset=${offset}&limit=${itemsPerPage}`);
-  displayPokemon(newPokemon);
+  if (!filtersEnabled) {
+    await getPokemonDataFromQuery(`?offset=${offset}&limit=${itemsPerPage}`)
+    .then(() => {
+      displayPokemon();
+    });
+  } else {
+    displayPokemon();
+  }
+  
+  
 }
 
 const validatePrevButton = function() {

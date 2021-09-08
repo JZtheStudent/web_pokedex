@@ -1,6 +1,6 @@
 const pokeApi = "https://pokeapi.co/api/v2/pokemon/";
 
-
+let pokemon = [];
 
 const getAllPokemon = async function(query) {
   let url = pokeApi + query;
@@ -24,7 +24,8 @@ const getPokemonDataFromQuery = async function(query) {
       const fullData = await Promise.all(pokePromises);
       return fullData;
     });
-    return allPokeData;
+    pokemon = allPokeData;
+
 }
 
 const getPokemonData = async function(url) {
@@ -43,7 +44,7 @@ const getPokemonImage = function(pokeImage, id) {
 }
 
 // Takes in an array
-const displayPokemon = async function(pokemon) {
+const displayPokemon = async function() {
   displayCurrentPage();
   clearPokeList();
   
@@ -81,9 +82,13 @@ const displayPokemon = async function(pokemon) {
 }
 
 const defaultDisplay = async function() {
-  let defaultPokemon = await getPokemonDataFromQuery(`?limit=${itemsPerPage}`)
-  currentPage = 1;
-  displayPokemon(defaultPokemon);
+  pokemon = await getPokemonDataFromQuery(`?limit=${itemsPerPage}`)
+    .then(() => {
+      currentPage = 1;
+      console.log(pokemon);
+      displayPokemon();
+    });
+  
 }
 
 const goToPokemonDetails = function(name) {
