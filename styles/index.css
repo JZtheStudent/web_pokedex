@@ -1,6 +1,11 @@
-body {
+@font-face {
+  font-family: pokeFont;
+  src: url(./fonts/Pokemon\ Solid.ttf);
+}
 
+body {
   background-color: rgb(241, 236, 236);
+
 }
 
 header {
@@ -10,8 +15,11 @@ header {
 
 #page-title {
   text-align: center;
+  font-family: pokeFont;
   font-size: 60px;
-  font-weight: bold;
+  letter-spacing: 5px;
+  margin-top: 50px;
+  color: #ffcb05;
 }
 
 #page-container {
@@ -19,8 +27,9 @@ header {
   height: 100%;
   position: static;
   margin: auto;
- 
-  background-color: rgb(116, 151, 127);
+  margin-bottom: 50px;
+  border: 4px solid black;
+  background-color: #e71616d7;
 }
 
 /* MAIN PAGE STARTS HERE */
@@ -35,7 +44,11 @@ header {
   justify-content: space-between;
   margin: 10px;
   padding: 10px;
-  border-bottom: 2px solid;
+  margin-bottom: 0;
+}
+
+.search-button {
+  background-color: #ffcb05;
 }
 
 .page-section {
@@ -47,6 +60,10 @@ header {
   margin-left: 10px;
 }
 
+.page-section > button {
+  background-color: #ffcb05;
+}
+
 .page-number {
   font-weight: 700;
   font-size: 20px;
@@ -54,14 +71,19 @@ header {
 
 .filter-section {
   display: flex;
-  background-color: lightblue;
-  
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(178, 215, 228);
   padding: 50px;
+  border-bottom: 4px solid black;
+  border-top: 4px solid black;
+
 }
 
 .types-list-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .types-list {
@@ -77,6 +99,7 @@ header {
   justify-content: center;
   margin-right: 30px;
   margin-top: 30px;
+  border-radius: 50px;
 }
 
 .type-link:hover {
@@ -109,26 +132,35 @@ header {
 }
 
 .pokemon-section {
-  background-color: lightblue;
+  background-color: #2a75bb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 }
 
+.pokemon-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  background-color: purple;
 }
 
 
 .pokemon-list-item {
   display: block;
+  background-color: white;
+  border-radius: 50%;
   width: 300px;
   height: 300px;
   margin: 10px;
   padding: 10px;
   text-align: center;
-  background-color: brown;
 }
 
 .pokemon-list-item:hover {
@@ -146,28 +178,31 @@ header {
 
 /* SHOW PAGE BEGINS HERE */
 .nav-buttons-container {
-  
-  width: 95%;
-  
   padding: 10px;
-  border-bottom: 2px solid;
+}
+
+.back-button, .home-button {
+  background-color: #ffcb05;
 }
 
 .show-page-container.hidden {
   display: none;
 }
 
+.page-content-section {
+  background-color: rgb(241, 236, 236);
+  border-top: 4px solid black;
+}
 
 .show-page-title {
   text-align: center;
   padding: 30px;
-  margin: 0px 0px 15px 0px;
+  padding-bottom: 10px;
   font-weight: 700;
   font-size: 50px;
 }
 
 .show-poke-info-section {
-  background-color: rosybrown;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,11 +214,10 @@ header {
   justify-content: center;
   align-items: center;
   width: 30%;
-  background-color: blueviolet;
-  
-  margin: 10px;
   padding: 10px;
   margin-bottom: 50px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .show-poke-details-container {
@@ -197,13 +231,12 @@ header {
   width: 90%;
   margin: 5px;
   padding: 5px;
-  background-color:rgb(207, 44, 44)
+  
 }
 
 .show-types-container {
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
   margin: 10px;
   margin-bottom: 30px;
   padding: 10px;
@@ -211,7 +244,7 @@ header {
 
 .show-types-header {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -239,7 +272,7 @@ header {
 
 .flavor-text-title {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
   margin: 10px;
   padding: 10px;
@@ -247,12 +280,18 @@ header {
 
 .flavor-text {
   text-align: center;
-  font-size: 18px;
+  font-size: 25px;
+}
+
+.show-evolutions-section {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-evo-list {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  background-color: purple;
 }
