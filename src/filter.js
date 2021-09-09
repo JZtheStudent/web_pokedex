@@ -5,24 +5,24 @@ let filtersEnabled = false;
 
 
 const types = {
-  'normal': '../images/types/normal.png',
-  'fire': '../images/types/fire.png',
-  'water': '../images/types/water.png',
-  'grass': '../images/types/grass.png',
-  'electric': '../images/types/electric.png',
-  'ice': '../images/types/ice.png',
-  'fighting': '../images/types/fighting.png',
-  'poison': '../images/types/poison.png',
-  'ground': '../images/types/ground.png',
-  'flying': '../images/types/flying.png',
-  'psychic': '../images/types/psychic.png',
-  'bug': '../images/types/bug.png',
-  'rock': '../images/types/rock.png',
-  'ghost': '../images/types/ghost.png',
-  'dark': '../images/types/dark.png',
-  'dragon': '../images/types/dragon.png',
-  'steel': '../images/types/steel.png',
-  'fairy': '../images/types/fairy.png'
+  'normal': './images/types/normal.png',
+  'fire': './images/types/fire.png',
+  'water': './images/types/water.png',
+  'grass': './images/types/grass.png',
+  'electric': './images/types/electric.png',
+  'ice': './images/types/ice.png',
+  'fighting': './images/types/fighting.png',
+  'poison': './images/types/poison.png',
+  'ground': './images/types/ground.png',
+  'flying': './images/types/flying.png',
+  'psychic': './images/types/psychic.png',
+  'bug': './images/types/bug.png',
+  'rock': './images/types/rock.png',
+  'ghost': './images/types/ghost.png',
+  'dark': './images/types/dark.png',
+  'dragon': './images/types/dragon.png',
+  'steel': './images/types/steel.png',
+  'fairy': './images/types/fairy.png'
 }
 
 let selectedTypes = [];
