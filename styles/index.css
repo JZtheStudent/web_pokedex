@@ -106,12 +106,14 @@ header {
   cursor: pointer;
 }
 
+
 .type-link.unselected > img {
   opacity: 40%;
 }
 
 .type-link > img {
-  opacity: 100%
+  opacity: 100%;
+  transition: opacity .3s ease-in-out;
 }
 
 .type-link.unselected > img:hover {
@@ -168,7 +170,7 @@ header {
   padding: 10px;
   text-align: center;
   opacity: 100%;
-  transition: opacity .5s ease-in-out;
+  transition: opacity .3s ease-in-out;
 }
 
 .pokemon-list-item:hover {
