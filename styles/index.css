@@ -16,7 +16,7 @@ header {
 #page-title {
   text-align: center;
   font-family: pokeFont;
-  font-size: 60px;
+  font-size: 80px;
   letter-spacing: 5px;
   margin-top: 50px;
   color: #ffcb05;
@@ -314,4 +314,41 @@ header {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+}
+
+/* 
+  SHOW PAGE SECTION ENDS HERE
+*/
+
+/* 
+  AUTHOR SECTION STARTS HERE
+*/
+
+.author-section {
+  background-color: white;
+  border-top: 4px solid black;
+}
+
+.author-section-wrapper {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(105,105,105, .3);
+}
+
+.author-header {
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.logo-image {
+  width: 50px;
+  margin-left: 20px;
+  opacity: 100%;
+  transition: opacity .3s ease-in-out;
+}
+
+.logo-image:hover {
+  opacity: 50%;
 }
