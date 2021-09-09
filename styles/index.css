@@ -115,6 +115,7 @@ header {
 }
 
 .type-link.unselected > img:hover {
+
   opacity: 100%;
 }
 
@@ -151,26 +152,41 @@ header {
   flex-wrap: wrap;
 }
 
+.poke-list-item-container {
+  background-image: url('../images/pokeball_square.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .pokemon-list-item {
   display: block;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 1);
   border-radius: 50%;
   width: 300px;
   height: 300px;
   margin: 10px;
   padding: 10px;
   text-align: center;
+  opacity: 100%;
+  transition: opacity .5s ease-in-out;
 }
 
 .pokemon-list-item:hover {
-  opacity: 70%;
+  opacity: 0%;
+  cursor: pointer;
 }
 
 .poke-image {
   width: 250px;
   margin: 3px;
   padding: 3px;
+}
+
+.poke-name {
+  position: relative;
+  bottom: 20px;
+  font-weight: 500;
+  font-size: 23px;
 }
 
 
@@ -194,9 +210,6 @@ header {
   border-top: 4px solid black;
 }
 
-.content-background {
-  
-}
 
 .show-page-title {
   text-align: center;

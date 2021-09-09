@@ -62,10 +62,15 @@ const displayPokemon = async function(where, poke = pokemon) {
       goToPokemonDetails(poke.name, poke.id);
     }
     
-    let pokeListItem = document.createElement('li')
+    let pokeListItemContainer = document.createElement('div');
+    pokeListItemContainer.classList.add('poke-list-item-container');
+
+    let pokeListItem = document.createElement('li');
     pokeListItem.classList.add('pokemon-list-item');
     pokeListItem.id = poke.id;
     
+    
+
     let pokeImage = document.createElement('img');
     pokeImage.setAttribute('src', '');
     getPokemonImage(pokeImage, poke.id);
@@ -74,11 +79,14 @@ const displayPokemon = async function(where, poke = pokemon) {
     
     
     let pokeName = document.createElement('h1');
+    pokeName.classList.add('poke-name');
     pokeName.innerHTML = `${poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}`;
+    
     
     pokeListItem.appendChild(pokeImage);
     pokeListItem.appendChild(pokeName);
-    pokeLink.appendChild(pokeListItem);
+    pokeListItemContainer.appendChild(pokeListItem);
+    pokeLink.appendChild(pokeListItemContainer);
     pokeList.appendChild(pokeLink);
   
   });
