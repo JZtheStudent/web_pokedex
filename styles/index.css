@@ -20,6 +20,7 @@ header {
   letter-spacing: 5px;
   margin-top: 50px;
   color: #ffcb05;
+  text-shadow: 10px 10px 0px black;
 }
 
 #page-container {
@@ -47,10 +48,15 @@ header {
   margin-bottom: 0;
 }
 
+.search-input {
+  font-size: 20px;
+}
+
 .search-button {
   background-color: #ffcb05;
   opacity: 100%;
   transition: opacity .2s ease-in-out;
+  font-size: 20px;
 }
 
 .search-button:hover {
@@ -61,6 +67,7 @@ header {
 .page-section {
   position: relative;
   display: flex;
+  align-items: center;
 }
 
 .page-section > * {
@@ -71,6 +78,7 @@ header {
   background-color: #ffcb05;
   opacity: 100%;
   transition: opacity .2s ease-in-out;
+  font-size: 20px;
 }
 
 .page-section > button:hover {
@@ -85,7 +93,7 @@ header {
 
 .page-number {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .filter-section {
@@ -223,6 +231,14 @@ header {
 
 .back-button, .home-button {
   background-color: #ffcb05;
+  font-size: 20px;
+  margin-right: 5px;
+  opacity: 100%;
+  transition: opacity .2s ease-in-out;
+}
+
+.back-button:hover, .home-button:hover {
+  opacity: 80%;
 }
 
 .show-page-container.hidden {

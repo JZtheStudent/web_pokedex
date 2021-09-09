@@ -3,7 +3,7 @@ const nextButton = document.querySelector('.page-next-button');
 
 
 let currentPage = 1;
-let itemsPerPage = 50;
+let itemsPerPage = 30;
 
 prevButton.onclick = function(e) {
   e.preventDefault();
@@ -42,7 +42,7 @@ const validatePrevButton = function() {
 
 const validateNextButton = function() {
   let listLength = document.querySelectorAll(".pokemon-list li").length;
-  if (listLength < 50) {
+  if (listLength < itemsPerPage) {
     nextButton.disabled = true;
   } else {
     nextButton.disabled = false;
