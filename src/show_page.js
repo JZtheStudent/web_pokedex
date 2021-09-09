@@ -64,9 +64,15 @@ const loadPage = async function(poke) {
 }
 
 const displayBasicInfo = function(data) {
+  changeBackgroundColor(data.types[0].type.name);
   displayTitle(data);
   displayImage(data);
   displayTypes(data);
+}
+
+const changeBackgroundColor = function(type) {
+  let container = document.querySelector('.content-background');
+  container.style.backgroundColor = typeColors[type];
 }
 
 const displayTitle = function(data) {
