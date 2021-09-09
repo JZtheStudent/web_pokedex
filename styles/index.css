@@ -5,8 +5,8 @@
 
 body {
   background-color: rgb(241, 236, 236);
-
 }
+
 
 header {
   margin: 10px;
@@ -49,6 +49,13 @@ header {
 
 .search-button {
   background-color: #ffcb05;
+  opacity: 100%;
+  transition: opacity .2s ease-in-out;
+}
+
+.search-button:hover {
+  opacity: 80%;
+  cursor: pointer;
 }
 
 .page-section {
@@ -62,6 +69,18 @@ header {
 
 .page-section > button {
   background-color: #ffcb05;
+  opacity: 100%;
+  transition: opacity .2s ease-in-out;
+}
+
+.page-section > button:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.page-section > button:disabled:hover {
+  opacity: 100%;
+  cursor: not-allowed;
 }
 
 .page-number {
