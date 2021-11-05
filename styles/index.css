@@ -114,8 +114,8 @@ header {
 }
 
 .types-list {
-  
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -179,6 +179,7 @@ header {
 
 .pokemon-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
